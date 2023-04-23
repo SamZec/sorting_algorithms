@@ -33,6 +33,7 @@ void insertion_sort_list(listint_t **list)
  * @head: A points to the head of the doubly-linked list.
  * @node_1: First node to position.
  * @node_2: The second node to position.
+ * Retrun: void
  */
 void pos_node(listint_t **head, listint_t **node_1, listint_t *node_2)
 {
