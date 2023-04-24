@@ -38,7 +38,7 @@ void hoare_sort(int *array, size_t size, int lob, int upb)
 	{
 		p = hoare_partition(array, size, lob, upb);
 		hoare_sort(array, size, lob, p - 1);
-		hoare_sort(array, size, p + 1, upb);
+		hoare_sort(array, size, p, upb);
 	}
 }
 
