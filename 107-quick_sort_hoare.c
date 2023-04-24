@@ -1,7 +1,7 @@
 #include "sort.h"
 
 void hoare_sort(int *array, size_t size, int lob, int upb);
-void swap(int *array, int a, int b);
+void swap(int *a, int *b);
 int hoare_partition(int *array, size_t size, int lob, int upb);
 
 /**
@@ -45,19 +45,18 @@ void hoare_sort(int *array, size_t size, int lob, int upb)
 /**
  * swap - a function that rotates to integers
  *
- * @array: list of integers to rotate
- * @a: index of first integer
- * @b: index of second integer
+ * @a: first  integer
+ * @b: second integer
  *
  * Return: void
  */
-void swap(int *array, int a, int b)
+void swap(int *a, int *b)
 {
 	int temp;
 
-	temp = array[a];
-	array[a] = array[b];
-	array[b] = temp;
+	temp = *a;
+	*a = *b;
+	*b = temp;
 }
 
 /**
@@ -80,13 +79,16 @@ int hoare_partition(int *array, size_t size, int lob, int upb)
 	p = array[upb];
 	while (start < end)
 	{
-		while (array[start] < p)
+		do {
 			start++;
-		while (array[end] > p)
+		} while (array[start] < p);
+		do {
 			end--;
+		} while (array[end] > p);
+
 		if (start < end)
 		{
-			swap(array, start, end);
+			swap(array + start, array + end);
 			print_array(array, size);
 		}
 	}
